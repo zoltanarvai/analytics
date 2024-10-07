@@ -1,10 +1,10 @@
 defmodule Plausible.IngestRepo.Migrations.CreateV2Schemas do
   @moduledoc """
   Normally, for live environments the migration will be done via
-  `DataMigration.NumericIDs` module. 
+  `DataMigration.NumericIDs` module.
 
-  For tests, and entirely new small, self-hosted instances however, 
-  we want to keep the ability of preparing the database without enforcing 
+  For tests, and entirely new small, self-hosted instances however,
+  we want to keep the ability of preparing the database without enforcing
   any _data_ migration.
   """
 
@@ -13,7 +13,7 @@ defmodule Plausible.IngestRepo.Migrations.CreateV2Schemas do
   use Plausible.DataMigration, dir: "NumericIDs"
 
   @cluster? false
-  @settings "SETTINGS index_granularity = 8192"
+  @settings ""
 
   def up do
     execute unwrap("create-events-v2", table_settings: @settings, cluster?: @cluster?)

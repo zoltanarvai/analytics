@@ -1,2 +1,2 @@
-KILL MUTATION <%= if @cluster? do %>ON CLUSTER '{cluster}'<% end %>
+KILL MUTATION
 WHERE command ILIKE '%sessions_dict%'

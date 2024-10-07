@@ -18,7 +18,7 @@ defmodule Plausible.IngestRepo do
   def clustered_table?(table) do
     case query("SELECT 1 FROM system.replicas WHERE table = '#{table}'") do
       {:ok, %{rows: []}} -> false
-      {:ok, _} -> false
+      {:ok, _} -> true
     end
   end
 end

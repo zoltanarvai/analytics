@@ -18,7 +18,7 @@ defmodule Plausible.DataMigration.NumericIDs do
     end
   end
 
-  @table_settings "SETTINGS index_granularity = 8192"
+  @table_settings ""
 
   def run(opts \\ []) do
     interactive? = Keyword.get(opts, :interactive?, true)

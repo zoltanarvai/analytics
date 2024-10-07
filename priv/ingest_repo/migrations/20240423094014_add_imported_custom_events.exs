@@ -8,9 +8,7 @@ defmodule Plausible.IngestRepo.Migrations.AddImportedCustomEvents do
     settings =
       if Plausible.IngestRepo.clustered_table?("imported_pages") do
         """
-        ENGINE = ReplicatedMergeTree('/clickhouse/{cluster}/tables/{shard}/{database}/imported_custom_events', '{replica}')
         ORDER BY (site_id, import_id, date, name)
-        SETTINGS replicated_deduplication_window = 0, storage_policy = 'tiered'
         """
       else
         """

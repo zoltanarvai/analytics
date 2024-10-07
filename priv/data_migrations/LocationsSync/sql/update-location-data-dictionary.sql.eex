@@ -1,5 +1,4 @@
 CREATE OR REPLACE DICTIONARY location_data_dict
-<%= if @cluster? do %>ON CLUSTER '{cluster}'<% end %>
 (
     `type` String,
     `id` String,

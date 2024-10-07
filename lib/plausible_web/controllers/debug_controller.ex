@@ -10,7 +10,7 @@ defmodule PlausibleWeb.DebugController do
 
   def clickhouse(conn, params) do
     cluster? = Plausible.IngestRepo.clustered_table?("events_v2")
-    on_cluster = if(cluster?, do: "ON CLUSTER '{cluster}'", else: "")
+    on_cluster = if(cluster?, do: "")
 
     # Ensure last logs are flushed
     IngestRepo.query("SYSTEM FLUSH LOGS #{on_cluster}")
@@ -49,7 +49,7 @@ defmodule PlausibleWeb.DebugController do
 
   defp from_query_log(cluster?) do
     case cluster? do
-      true -> from(l in fragment("clusterAllReplicas('{cluster}', system.query_log)"))
+      true -> from(l in fragment("system.query_log"))
       false -> from(l in fragment("system.query_log"))
     end
   end

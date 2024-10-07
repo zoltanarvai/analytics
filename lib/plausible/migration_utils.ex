@@ -6,7 +6,7 @@ defmodule Plausible.MigrationUtils do
   alias Plausible.IngestRepo
 
   def on_cluster_statement(table) do
-    if(IngestRepo.clustered_table?(table), do: "ON CLUSTER '{cluster}'", else: "")
+    ""
   end
 
   # See https://clickhouse.com/docs/en/sql-reference/dictionaries#clickhouse for context
